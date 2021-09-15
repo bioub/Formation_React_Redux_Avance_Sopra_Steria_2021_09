@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component, createRef } from 'react'
 
 import styles from './Select.module.scss';
 
@@ -6,6 +6,8 @@ class Select extends Component {
   state = {
     open: false,
   };
+
+  hostRef = createRef();
 
   handleSelectedClick = () => {
     const { open } = this.state;
@@ -21,6 +23,18 @@ class Select extends Component {
     this.props.onSelected(selected);
   };
 
+  handleDocumentClick = (event) => {
+    if (!this.hostRef.current?.contains(event.target)) {
+      this.setState({
+        open: false,
+      });
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleDocumentClick);
+  }
+
   render() {
     const { open } = this.state;
     const { selected, items } = this.props;
@@ -30,7 +44,7 @@ class Select extends Component {
     }
 
     return (
-      <div className={styles.host}>
+      <div className={styles.host} ref={this.hostRef}>
         <div className={styles.selected} onClick={this.handleSelectedClick}>
           {selected}
         </div>

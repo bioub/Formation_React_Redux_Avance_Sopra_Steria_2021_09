@@ -25,7 +25,19 @@ export default class Clock extends Component {
     clearInterval(this._interval);
   }
   render() {
+    const Component = this.props.component;
+    const now = this.state.now.toLocaleTimeString();
     // dans un composant stateful on manipule les props via this.props
-    return <div className="Clock">{this.state.now.toLocaleTimeString()}</div>;
+    return (
+      <div className="Clock">
+        {this.props.render ? (
+          this.props.render(now)
+        ) : Component ? (
+          <Component now={now} />
+        ) : (
+          now
+        )}
+      </div>
+    );
   }
 }
