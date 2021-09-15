@@ -1,6 +1,6 @@
-import './Select.css';
+import { Component } from 'react'
 
-import { Component } from 'react';
+import styles from './Select.module.scss';
 
 class Select extends Component {
   state = {
@@ -30,14 +30,14 @@ class Select extends Component {
     }
 
     return (
-      <div className="Select">
-        <div className="Select-selected" onClick={this.handleSelectedClick}>
+      <div className={styles.host}>
+        <div className={styles.selected} onClick={this.handleSelectedClick}>
           {selected}
         </div>
         {open && (
-          <div className="Select-items">
+          <div className={styles.items}>
             {items.map((it) => (
-              <div className="Select-item" key={it} onClick={() => this.handleItemClick(it)}>
+              <div className={styles.item} key={it} onClick={() => this.handleItemClick(it)}>
                 {it}
               </div>
             ))}
