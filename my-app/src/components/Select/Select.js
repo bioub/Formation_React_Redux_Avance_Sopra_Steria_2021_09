@@ -4,8 +4,6 @@ import { Component } from 'react';
 
 class Select extends Component {
   state = {
-    selected: 'B', // passer dans props
-    items: ['A', 'B', 'C'], // passer dans props
     open: false,
   };
 
@@ -18,13 +16,19 @@ class Select extends Component {
 
   handleItemClick = (selected) => {
     this.setState({
-      selected, // selected: selected
       open: false,
     });
+    this.props.onSelected(selected);
   };
 
   render() {
-    const { open, selected, items } = this.state;
+    const { open } = this.state;
+    const { selected, items } = this.props;
+
+    if (!items?.length) { // if (items && items.length)
+      throw new Error('items must be a filled array');
+    }
+
     return (
       <div className="Select">
         <div className="Select-selected" onClick={this.handleSelectedClick}>

@@ -11,9 +11,11 @@ export default function TopBar() {
     <div className="TopBar">
       <AppBar position="static" color="primary">
         <Toolbar className="TopBar-Toolbar">
-          <Typography variant="h6" color="inherit">
-            MyApp
-          </Typography>
+          <Link component={RouterLink} to="/" color="inherit">
+            <Typography variant="h6" color="inherit">
+              MyApp
+            </Typography>
+          </Link>
           <Link component={RouterLink} to="/todos" color="inherit">
             Todos
           </Link>

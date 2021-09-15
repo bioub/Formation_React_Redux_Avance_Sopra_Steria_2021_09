@@ -1,5 +1,4 @@
 import Clock from '../../../components/Clock/Clock';
-import Select from '../../../components/Select/Select';
 import TodoFormContainer from '../../containers/TodoFormContainer';
 import TodoListContainer from '../../containers/TodoListContainer';
 
@@ -11,7 +10,6 @@ export default function Todos() {
 
       <hr />
       <Clock />
-      <Select />
     </div>
   );
 }
