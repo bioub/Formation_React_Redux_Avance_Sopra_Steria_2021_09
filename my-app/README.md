@@ -22,3 +22,14 @@ Créer un context `ColorContext` comme dans le projet `react-communication` et m
 ## Higher Order Component
 
 Comme dans le projet `react-communication`, créer un Higher Order Component nommé `withColor` pour récupérer la valeur de `ColorContext` dans la `TopBar`.
+
+## Hooks de bases
+
+Reprendre le code du composant `Select`
+
+Remplacer `state` et `setState` par le hook `useState`.
+
+Remplacer `componentDidMount` par le hook `useEffect`
+
+Remplacer `createRef` par le hook `useRef`.
+

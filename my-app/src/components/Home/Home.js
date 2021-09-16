@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { toggler } from '../../hocs/toggler';
 import { withThemeColor } from '../../hocs/withThemeColor';
 import Clock from '../Clock/Clock';
+import Counter from '../Counter/Counter';
 import Select from '../Select/Select';
 
 const ToggleClock = toggler(Clock);
@@ -45,6 +46,10 @@ class Home extends Component {
         <Clock render={(now) => <b>{now}</b>} />
         <Clock component={(props) => <b>{props.now}</b>} />
         <Clock />
+
+        <Counter />
+        <Counter />
+        <Counter />
       </div>
     );
   }
