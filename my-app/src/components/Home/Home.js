@@ -1,7 +1,7 @@
 import Brightness1Icon from '@material-ui/icons/Brightness1';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 
-import { withThemeColor } from '../../hocs/withThemeColor';
+import { ThemeColorContext } from '../../contexts/ThemeColorContext';
 import Clock from '../Clock/Clock';
 import Counter from '../Counter/Counter';
 import CounterControlled from '../CounterControlled/CounterControlled';
@@ -17,7 +17,8 @@ function renderColor(item) {
   );
 }
 
-function Home({ themeColor }) {
+function Home() {
+  const themeColor = useContext(ThemeColorContext);
   const [count, setCount] = useState(0);
   const handleSelected = useCallback(
     (selected) => themeColor.setColor(selected),
@@ -57,4 +58,6 @@ function Home({ themeColor }) {
   );
 }
 
-export default withThemeColor(Home);
+// export default withThemeColor(Home);
+
+export default Home;

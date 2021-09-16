@@ -1,9 +1,23 @@
-function CounterControlled({ count, onIncrement }) {
+import { func, number } from 'prop-types'
+
+/**
+ *
+ * @param {object} props
+ * @param {number} props.count
+ * @param {Function} props.onIncrement
+ * @returns
+ */
+function CounterControlled(props) {
   return (
     <div className="CounterControlled">
-      <button onClick={() => onIncrement()}>{count}</button>
+      <button onClick={() => props.onIncrement()}>{props.count}</button>
     </div>
   );
+}
+
+CounterControlled.propTypes = {
+  count: number.isRequired,
+  onIncrement: func.isRequired,
 }
 
 export default CounterControlled;
