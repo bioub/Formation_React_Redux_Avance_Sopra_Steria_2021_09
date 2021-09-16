@@ -39,16 +39,18 @@ class Home extends Component {
           renderSelected={this.renderColor}
           selected={themeColor.color}
           items={['primary', 'secondary']}
-          onSelected={themeColor.setColor}
+          onSelected={(selected) => {
+            import('lodash-es').then(({ capitalize }) => {
+              themeColor.setColor(capitalize(selected))
+            })
+          }}
         />
-        <p>Vous avez sélectionné : {themeColor.color}</p>
+        <p>Vous avez sélectionné : {(themeColor.color)}</p>
 
-        <Clock render={(now) => <b>{now}</b>} />
-        <Clock component={(props) => <b>{props.now}</b>} />
+        {/* <Clock render={(now) => <b>{now}</b>} />
+        <Clock component={(props) => <b>{props.now}</b>} /> */}
         <Clock />
 
-        <Counter />
-        <Counter />
         <Counter />
       </div>
     );

@@ -33,3 +33,12 @@ Remplacer `componentDidMount` par le hook `useEffect`
 
 Remplacer `createRef` par le hook `useRef`.
 
+## Performances
+
+Au moment ou le composant disparait du DOM, appeler la méthode `removeEventListener` sur l'objet `document`
+
+Utiliser la fonction `memo` sur le composant `Select` pour éviter les render inutiles.
+
+Utiliser la fonction `useCallback` sur le parent de `Select` pour éviter de repasser une nouvelle fonction `onSelected` à chaque render de `Home`
+
+Lazy Loader Home en utilisant `React.lazy` et `Suspense`.
