@@ -39,6 +39,8 @@ Au moment ou le composant disparait du DOM, appeler la méthode `removeEventList
 
 Utiliser la fonction `memo` sur le composant `Select` pour éviter les render inutiles.
 
-Utiliser la fonction `useCallback` sur le parent de `Select` pour éviter de repasser une nouvelle fonction `onSelected` à chaque render de `Home`
+Transformer le class component `Home`, en function component
 
-Lazy Loader Home en utilisant `React.lazy` et `Suspense`.
+Utiliser la fonction `useCallback` sur le parent de `Select` pour éviter de repasser une nouvelle fonction `onSelected` et `renderItem` + `renderSelected`(à faire une fois si c'est la même fonction) à chaque render de `Home`
+
+Lazy Loader `Home` en utilisant `React.lazy` et `Suspense`.
