@@ -37,7 +37,7 @@ class Select extends Component {
 
   render() {
     const { open } = this.state;
-    const { selected, items } = this.props;
+    const { selected, items, renderItem, renderSelected } = this.props;
 
     if (!items?.length) { // if (items && items.length)
       throw new Error('items must be a filled array');
@@ -46,13 +46,13 @@ class Select extends Component {
     return (
       <div className={styles.host} ref={this.hostRef}>
         <div className={styles.selected} onClick={this.handleSelectedClick}>
-          {selected}
+          {renderSelected ? renderSelected(selected) : selected}
         </div>
         {open && (
           <div className={styles.items}>
             {items.map((it) => (
               <div className={styles.item} key={it} onClick={() => this.handleItemClick(it)}>
-                {it}
+                {renderItem ? renderItem(it) : it}
               </div>
             ))}
           </div>

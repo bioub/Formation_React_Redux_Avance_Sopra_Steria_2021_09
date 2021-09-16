@@ -6,10 +6,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Link as RouterLink } from 'react-router-dom';
 
-export default function TopBar() {
+import { withThemeColor } from '../../hocs/withThemeColor';
+
+export function TopBar({ themeColor }) {
   return (
     <div className="TopBar">
-      <AppBar position="static" color="primary">
+      <AppBar position="static" color={themeColor.color}>
         <Toolbar className="TopBar-Toolbar">
           <Link component={RouterLink} to="/" color="inherit">
             <Typography variant="h6" color="inherit">
@@ -27,3 +29,5 @@ export default function TopBar() {
     </div>
   );
 }
+
+export default withThemeColor(TopBar);
