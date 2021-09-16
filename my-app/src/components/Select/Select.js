@@ -1,4 +1,4 @@
-import { Component, createRef, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
 import styles from './Select.module.scss';
 
@@ -76,7 +76,6 @@ function Select({ selected, items, renderItem, renderSelected, onSelected }) {
   };
 
   const handleDocumentClick = (event) => {
-    console.log('document click');
     if (!hostRef.current?.contains(event.target)) {
       setOpen(false);
     }
@@ -84,6 +83,9 @@ function Select({ selected, items, renderItem, renderSelected, onSelected }) {
 
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
   }, []);
 
   if (!items?.length) {
@@ -113,4 +115,4 @@ function Select({ selected, items, renderItem, renderSelected, onSelected }) {
   );
 }
 
-export default Select;
+export default memo(Select);

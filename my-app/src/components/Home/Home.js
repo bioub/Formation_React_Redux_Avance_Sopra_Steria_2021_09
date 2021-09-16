@@ -1,60 +1,60 @@
 import Brightness1Icon from '@material-ui/icons/Brightness1';
-import React, { Component } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-import { toggler } from '../../hocs/toggler';
 import { withThemeColor } from '../../hocs/withThemeColor';
 import Clock from '../Clock/Clock';
 import Counter from '../Counter/Counter';
+import CounterControlled from '../CounterControlled/CounterControlled';
 import Select from '../Select/Select';
 
-const ToggleClock = toggler(Clock);
-const ToggleSelect = toggler(Select);
+const colors = ['primary', 'secondary'];
 
-class Home extends Component {
-  // state = {
-  //   color: 'primary',
-  // };
-
-  // handleSelected = (color) => {
-  //   this.setState({
-  //     color,
-  //   });
-  // };
-
-  renderColor = (item) => (
+function renderColor(item) {
+  return (
     <>
       <Brightness1Icon color={item} /> {item}
     </>
   );
+}
 
-  render() {
-    // const { color } = this.state;
-    const { themeColor } = this.props;
-    return (
-      <div className="Home">
-        <h2>Home</h2>
-        {/* <ToggleClock defaultShow={true} /> */}
-        <Select
-          renderItem={this.renderColor}
-          renderSelected={this.renderColor}
-          selected={themeColor.color}
-          items={['primary', 'secondary']}
-          onSelected={(selected) => {
-            import('lodash-es').then(({ capitalize }) => {
-              themeColor.setColor(capitalize(selected))
-            })
-          }}
-        />
-        <p>Vous avez sélectionné : {(themeColor.color)}</p>
+function Home({ themeColor }) {
+  const [count, setCount] = useState(0);
+  const handleSelected = useCallback(
+    (selected) => themeColor.setColor(selected),
+    [themeColor],
+  );
 
-        {/* <Clock render={(now) => <b>{now}</b>} />
-        <Clock component={(props) => <b>{props.now}</b>} /> */}
-        <Clock />
+  return (
+    <div className="Home">
+      <h2>Home</h2>
+      <Select
+        renderItem={renderColor}
+        renderSelected={renderColor}
+        selected={themeColor.color}
+        items={colors}
+        onSelected={handleSelected}
+      />
+      <p>Vous avez sélectionné : {themeColor.color}</p>
 
-        <Counter />
-      </div>
-    );
-  }
+      <Clock />
+      <Counter />
+      <Counter />
+      <Counter />
+
+      <CounterControlled
+        count={count}
+        onIncrement={() => setCount(count + 1)}
+      />
+      <CounterControlled
+        count={count}
+        onIncrement={() => setCount(count + 1)}
+      />
+      <CounterControlled
+        count={count}
+        onIncrement={() => setCount(count + 1)}
+      />
+    </div>
+  );
 }
 
 export default withThemeColor(Home);

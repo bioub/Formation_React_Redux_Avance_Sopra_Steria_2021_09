@@ -6,9 +6,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import ThemeColorProvider from '../../contexts/ThemeColorContext';
 // import Todos from '../../todos/components/Todos/Todos';
 // import Users from '../../users/components/Users/Users';
-import Home from '../Home/Home';
+// import Home from '../Home/Home';
 import TopBar from '../TopBar/TopBar';
 
+const Home = lazy(() => import('../Home/Home'));
 const Todos = lazy(() => import('../../todos/components/Todos/Todos'));
 const Users = lazy(() => import('../../users/components/Users/Users'));
 
