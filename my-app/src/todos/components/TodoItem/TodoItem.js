@@ -13,7 +13,7 @@ export default function TodoItem({ item, onDeleteItem }) {
 
   // bloquer le thread avec une fonction longue
   // blockThread(10);
-  const result = useMemo(() => blockThread(10), [])
+  // const result = useMemo(() => blockThread(10), [])
 
 
   return (
