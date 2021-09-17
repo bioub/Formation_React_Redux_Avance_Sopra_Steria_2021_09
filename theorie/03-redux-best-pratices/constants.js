@@ -1,0 +1,2 @@
+exports.INCREMENT = 'INCREMENT';
+exports.SET_STEP = 'SET_STEP';
