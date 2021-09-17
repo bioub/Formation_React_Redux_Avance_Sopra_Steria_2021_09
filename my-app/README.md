@@ -44,3 +44,14 @@ Transformer le class component `Home`, en function component
 Utiliser la fonction `useCallback` sur le parent de `Select` pour éviter de repasser une nouvelle fonction `onSelected` et `renderItem` + `renderSelected`(à faire une fois si c'est la même fonction) à chaque render de `Home`
 
 Lazy Loader `Home` en utilisant `React.lazy` et `Suspense`.
+
+
+## Redux
+
+Sur le modèle de TODO_ADD, utiliser createAction pour générer l'action create todoAdd et utiliser createReducer pour générer inputReducer.
+
+Créer les actions et reducer pour supprimer une todo, le déclencher au click du bouton moins de l'item.
+
+Installer et activer redux-persist de telle sorte à ce que le state persiste dans le localStorage (suivre simplement le QuickStart Basique) :
+https://github.com/rt2zz/redux-persist#basic-usage
+

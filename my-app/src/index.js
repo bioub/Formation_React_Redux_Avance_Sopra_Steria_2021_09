@@ -1,16 +1,23 @@
 import './index.css';
 
+import { configureStore } from '@reduxjs/toolkit';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './components/App/App';
-import { configureStore } from './configureStore';
 import * as serviceWorker from './serviceWorker';
+import { todosReducer } from './todos/reducers';
+import { usersReducer } from './users/reducers';
 
 ReactDOM.render(
   <StrictMode>
-    <Provider store={configureStore()}>
+    <Provider store={configureStore({
+      reducer: {
+        todos: todosReducer,
+        users: usersReducer,
+      }
+    })}>
       <App />
     </Provider>
   </StrictMode>,

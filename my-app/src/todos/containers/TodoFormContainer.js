@@ -22,3 +22,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
+
+
+// function TodoFormContainer() {
+//   return <TodoForm newTodoInput={store.getState().todos.input} />
+// }

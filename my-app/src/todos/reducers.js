@@ -1,5 +1,7 @@
+import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
+import { todoAdd } from './actions';
 import { TODO_ADD, TODO_CHANGE } from './constants';
 
 function inputReducer(previousState = '', { type, payload }) {
@@ -11,14 +13,18 @@ function inputReducer(previousState = '', { type, payload }) {
   }
 }
 
-function itemsReducer(previousState = [], { type, payload }) {
-  switch (type) {
-    case TODO_ADD:
-      return [...previousState, payload];
-    default:
-      return previousState;
-  }
-}
+// function itemsReducer(previousState = [], { type, payload }) {
+//   switch (type) {
+//     case TODO_ADD:
+//       return [...previousState, payload];
+//     default:
+//       return previousState;
+//   }
+// }
+
+const itemsReducer = createReducer([], {
+  [todoAdd]: (previousState, { payload }) => [...previousState, payload]
+})
 
 const todosReducer = combineReducers({
   input: inputReducer,

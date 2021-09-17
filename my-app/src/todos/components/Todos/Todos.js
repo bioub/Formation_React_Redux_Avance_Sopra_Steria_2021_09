@@ -20,9 +20,9 @@ export default function Todos() {
 
   return (
     <div className="Todos">
-      {/* <TodoFormContainer />
-      <TodoListContainer /> */}
-      <TodoForm newTodoInput={input} onNewTodoChange={setInput} onNewTodoAdd={(input) => {
+      <TodoFormContainer />
+      <TodoListContainer />
+      {/* <TodoForm newTodoInput={input} onNewTodoChange={setInput} onNewTodoAdd={(input) => {
         // Changement muable (mettre à jour l'objet (array) existant)
         // items.push(input);
         // setItems(items);
@@ -30,7 +30,7 @@ export default function Todos() {
         // Changement immuable (créer un nouvel objet (array))
         setItems([...items, {text: input, id: Math.random()}]);
       }}/>
-      <TodoList items={items} count={items.length} onDeleteItem={deleteItem}  />
+      <TodoList items={items} count={items.length} onDeleteItem={deleteItem}  /> */}
 
       <hr />
       <Clock />

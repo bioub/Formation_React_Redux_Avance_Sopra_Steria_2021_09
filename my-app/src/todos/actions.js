@@ -1,3 +1,5 @@
+import { createAction, nanoid } from '@reduxjs/toolkit';
+
 import { TODO_ADD, TODO_CHANGE } from './constants';
 
 function randomInt() {
@@ -8,15 +10,25 @@ function todoChange(payload) {
   return { type: TODO_CHANGE, payload };
 }
 
-function todoAdd(text) {
+// function todoAdd(text) {
+//   return {
+//     type: TODO_ADD,
+//     payload: {
+//       id: randomInt(),
+//       text,
+//       completed: false,
+//     },
+//   };
+// }
+
+const todoAdd = createAction('TODO_ADD', (text) => {
   return {
-    type: TODO_ADD,
     payload: {
-      id: randomInt(),
+      id: nanoid(),
       text,
       completed: false,
-    },
-  };
-}
+    }
+  }
+})
 
 export { todoChange, todoAdd };
