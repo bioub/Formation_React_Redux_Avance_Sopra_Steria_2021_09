@@ -1,4 +1,4 @@
-import { inputReducer } from "./reducers";
+import { inputReducer, itemsReducer } from "./reducers";
 
 describe('todos reducers', () => {
   test('inputReducers (TODO_CHANGE action)', () => {
@@ -19,7 +19,12 @@ describe('todos reducers', () => {
   });
 
   // Exercice tester les 3 cas possible de itemsReducer (TODO_ADD, TODO_DELETE, UNKNOWN)
-  test('itemsReducers', () => {
+  test('itemsReducers (TODO_ADD action)', () => {
+    const state = [{id: '123', text: 'ABC'}, {id: '789', text: 'XYZ'}];
+    const action = { type: 'TODO_ADD', payload: {id: '333', text: 'GHI'} };
 
+    const nextState = itemsReducer(state, action);
+    expect(nextState).toEqual([{id: '123', text: 'ABC'}, {id: '789', text: 'XYZ'}, {id: '333', text: 'GHI'}])
+    expect(nextState).not.toBe(state); // !== (immuabilité)
   });
 })
