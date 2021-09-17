@@ -4,21 +4,30 @@ import { configureStore } from '@reduxjs/toolkit';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { persistReducer, persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react'
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import { todosReducer } from './todos/reducers';
 import { usersReducer } from './users/reducers';
 
+const store = configureStore({
+  reducer: {
+    todos: persistReducer({ key: 'todos', storage }, todosReducer),
+    users: usersReducer,
+  },
+});
+
+const persistor = persistStore(store);
+
 ReactDOM.render(
   <StrictMode>
-    <Provider store={configureStore({
-      reducer: {
-        todos: todosReducer,
-        users: usersReducer,
-      }
-    })}>
-      <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </StrictMode>,
   document.getElementById('root'),
