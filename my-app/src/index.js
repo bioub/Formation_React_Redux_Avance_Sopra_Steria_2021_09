@@ -20,6 +20,10 @@ const store = configureStore({
   },
 });
 
+// store.subscribe(() => {
+//   localStorage.setItem('store', JSON.parse(store.getState()))
+// });
+
 const persistor = persistStore(store);
 
 ReactDOM.render(

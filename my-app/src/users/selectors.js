@@ -1,3 +1,5 @@
+import { createSelector } from '@reduxjs/toolkit'
+
 export function selectUsers(state) {
   return state.users;
 }
@@ -13,3 +15,8 @@ export function selectUsersItems(state) {
 export function selectUsersItemsById(state, id) {
   return selectUsersItems(state).find((items) => items.id === Number(id));
 }
+
+// createSelector === memoisation
+// export const selectUsersItemsById = createSelector(
+//   (state, id) => selectUsersItems(state).find((items) => items.id === Number(id)),
+// );
