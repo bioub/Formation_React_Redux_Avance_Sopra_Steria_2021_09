@@ -24,14 +24,14 @@ export default function TodoForm({
   // useEffect(() => {
   //   console.log('componentDidMount + componentDidUpdate');
   //   return () => {
-  //     console.log('componentWillUpdate');
+  //     console.log('componentWillUpdate + componentWillUnmount');
   //   };
   // });
 
   // useEffect(() => {
   //   console.log('componentDidMount + componentDidUpdate (si newTodoInput change)');
   //   return () => {
-  //     console.log('componentWillUpdate (si newTodoInput change)');
+  //     console.log('componentWillUpdate (si newTodoInput change) + componentWillUnmount');
   //   };
   // }, [newTodoInput]);
 

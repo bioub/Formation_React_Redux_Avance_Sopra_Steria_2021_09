@@ -16,6 +16,8 @@ export default function Todos() {
 
   const deleteItem = useCallback((item) => console.log('delete', item), []);
 
+  // const deleteItem = (item) => console.log('delete', item);
+
   return (
     <div className="Todos">
       {/* <TodoFormContainer />

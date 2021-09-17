@@ -51,7 +51,7 @@ function Home() {
         onIncrement={() => setCount(count + 1)}
       />
       <CounterControlled
-        count={count}
+        count={'count'}
         onIncrement={() => setCount(count + 1)}
       />
     </div>

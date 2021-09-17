@@ -18,10 +18,9 @@ import { Component, useState } from 'react';
 //   }
 // }
 
-
-  // const tmp = useState(0);
-  // const count = tmp[0];
-  // const setCount = tmp[1];
+// const tmp = useState(0);
+// const count = tmp[0];
+// const setCount = tmp[1];
 
 // state = {
 //   count: 10,
@@ -34,13 +33,22 @@ function Counter() {
   const [count, setCount] = useState(10); // state[0]
   const [step, setStep] = useState(2); // state[1]
 
-  const handleClick = () => {
-    setCount(count + step);
-  };
-  return <div className="Counter">
-    <button onClick={handleClick}>{count}</button>
-    <input type="number" value={step} onChange={(e) => setStep(Number(e.target.value))} />
-  </div>;
+  return (
+    <div className="Counter">
+      <button
+        onClick={() => {
+          setCount(count + step);
+        }}
+      >
+        {count}
+      </button>
+      <input
+        type="number"
+        value={step}
+        onChange={(e) => setStep(Number(e.target.value))}
+      />
+    </div>
+  );
 }
 
 export default Counter;
